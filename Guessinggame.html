@@ -1,0 +1,69 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+	Ext.application({
+		launch:function(){
+			Ext.create("Ext.Panel",{
+				fullscreen:true,
+				items:[
+					Ext.create("Ext.TitleBar",{
+								title : " Guessing Game ",
+								height: "5%"
+					}),
+					Ext.create("Ext.field.Text",{
+								placeHolder : "Enter Number",
+								id:"guess"
+					}),
+					Ext.create("Ext.Button",{
+						text : "Guess",
+						listeners: {
+								tap : function(){
+									var num=Ext.getCmp("guess");
+									var guessNum=Math.floor(Math.random()*100+1);
+									var attempts=0;
+									attempts++;
+									if(num.getValue()>guessNum)
+									{
+										
+										Ext.getCmp("message").setHtml("Aim Lower");
+										
+										
+									}
+									else if(num.getValue()<guessNum){
+										
+										Ext.getCmp("message").setHtml("Aim Higher");
+										Ext.getCmp("attempts").setHtml("Attempts"+attempts);
+										
+									}
+									else{
+										
+										Ext.getCmp("message").setHtml("You Got it!");
+										Ext.getCmp("attempts").setHtml("Attempts"+attempts);
+										
+									}
+
+									}
+									
+
+
+								}		
+					}),
+					Ext.create("Ext.Label",{
+								id:"message"
+					}),
+					Ext.create("Ext.Label",{
+								id:"attempts"
+					})
+				]
+			})
+		}
+	})
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
