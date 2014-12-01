@@ -1,0 +1,59 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+		Ext.application({
+			launch: function(){
+				Ext.create("Ext.Panel",{
+						fullscreen : true,
+						items : [
+							Ext.create("Ext.TitleBar",{
+								title : " Login ",
+								height: "5%"
+							}),
+							Ext.create("Ext.field.Text",{
+								placeHolder : "UserName",
+								id:"user"
+							}),
+							Ext.create('Ext.field.Password',{
+								placeHolder: 'Password'	,		                 
+			                    name: 'password',
+			                    id:"pass"
+							}),
+							Ext.create("Ext.Button",{
+								text : "Click",
+								listeners: {
+									tap : function(){
+										var username=Ext.getCmp("user");
+										var password=Ext.getCmp("pass");
+										if(username.getValue()=="admin" && password.getValue()=="admin")
+										{
+											Ext.getCmp("message").setHtml("Logging In..");
+											Ext.getCmp("username").disable();
+											Ext.getCmp("password").disable();
+										}
+										else{
+											Ext.getCmp("message").setHtml("Invalid Credentials")
+										}
+									}
+									
+
+
+								}
+							}),
+							Ext.create("Ext.Label",{
+								id:"message"
+							})
+
+						]
+
+					});
+			}
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
