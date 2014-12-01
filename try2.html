@@ -1,0 +1,82 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+		Ext.application({
+			launch: function(){
+				Ext.create('Ext.Panel', {
+				     fullscreen: true,
+				     layout:{
+				     	type:"vbox",
+				     	pack:"center",
+				     	align:"center"
+				     },
+				     items:[
+				     {
+				     	xtype: "panel",
+				     	margin:"1",
+				     	height:"20%",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},
+				     	items:[
+				     		{xtype: "button",
+				     			text:"A",height:"30",width:"40",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"B",height:"30",width:"40",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"C",height:"30",width:"40",
+				     			margin:"2"}
+				     	]
+				     },
+				     
+				     	{xtype: "panel",margin:"1",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},height:"20%",
+				     	items:[
+				     		{xtype: "button",
+				     			text:"D",height:"30",width:"40",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"E",height:"30",width:"40",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"F",height:"30",width:"40",
+				     			margin:"2"}
+				     	]
+				     },
+				     
+				     	{xtype: "panel",margin:"1",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},height:"20%",
+				     	items:[
+				     		{xtype: "button",
+				     			text:"G",height:"30",width:"40",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"H",height:"30",width:"40",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"I",height:"30",width:"40",
+				     			margin:"2"}
+				     	]
+				     }]
+				 })
+			}
+
+		})
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
