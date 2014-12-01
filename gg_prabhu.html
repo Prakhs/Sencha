@@ -1,0 +1,72 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+	var game = {
+		guessNum : Math.floor(Math.random()*100+1),
+		attempts : 0,
+		message : "",
+		play : function(guess){
+			game.attempts++;
+			if(guess>this.guessNum)
+			{
+				this.message = "Aim Lower";
+			}
+			else if(guess<this.guessNum){
+				this.message = "Aim Higher";
+			}
+			else{
+				this.message = "You've got it!!!";				
+			}
+		}
+	};
+
+	function play(){
+			var num=Ext.getCmp("guess").getValue();
+			game.play(num);
+			Ext.getCmp("message").setHtml(game.message);
+			Ext.getCmp("attempts").setHtml("Attempts: " + game.attempts);
+			
+	}
+	Ext.application({
+		launch:function(){
+			Ext.create("Ext.Panel",{
+				fullscreen:true,
+				items:[
+					{
+						xtype : "titlebar",
+						title : " Guessing Game ",
+						height: "5%"
+					},
+					{
+						xtype : "textfield",
+						placeHolder : "Enter Number",
+						id:"guess"
+					},
+					{
+						xtype : "button"
+						text : "Guess",
+						listeners: {
+							tap : play
+						}		
+					},
+					{
+						xtype : "label",
+						id:"message"
+					},
+					{
+						xtype : "label"
+						id:"attempts"
+					}
+				]
+			})
+		}
+	})
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
