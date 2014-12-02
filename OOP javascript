@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+		<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+		<script>
+			/*
+				class Person{
+					private String name;
+					public void setName(String name){
+						this.name = name;
+					}
+					public String getName(){
+						return name;
+					}
+					public Person(String name,int age){
+						this.name = name;
+						//this.age = age;
+					}
+					public void eat(){
+						print(this.getName() + " is eating");
+					}
+				}
+			*/
+
+			Ext.define("Animal",{
+				config : {
+					heart : "",
+					eyes : ""
+				},
+				constructor : function(data){
+					this.initConfig(data);
+					console.log("Animal created");
+				}
+			});
+			Ext.define("Dog",{
+				extend : "Animal"
+			});
+			var d1 = Ext.create("Dog",{
+				eyes : "two on the side",
+				heart : "tiny one"
+			});
+			console.log(d1.getEyes());
+
+			Ext.define("Person",{
+				config : {
+					name : "",
+					age : 0
+				},
+				constructor : function(data){
+					this.initConfig(data);
+					console.log("Person created");
+				},
+				eat : function(){
+					console.log(this.getName() + " is eating");
+				}
+			});
+			var p1 = Ext.create("Person",{ name : "Sam", age:12});
+			console.log(p1.getName());
+			p1.setAge(12);
+			p1.eat();
+
+			var p2 = Ext.create("Person",{name:"Ram"});
+			p2.setName("Ram");
+			p2.setAge(34);
+			p2.eat();
+
+			var person3 = Ext.create("Person", {name:"John",age:35});
+			person3.setAge(36);
+
+		</script>
+	</head>
+</html>
