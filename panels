@@ -1,0 +1,89 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+		Ext.define("Panel1",{
+			extend:"Ext.Panel",
+			config:{
+				layout:{
+				     	type:"vbox",
+				     	pack:"center",
+				     	align:"center"
+				     },
+				items:[
+				     {
+				     	xtype: "panel",
+				     	margin:"1",
+				     	height:"20%",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},
+				     	items:[
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn1",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn2",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn3",
+				     			margin:"2"}
+				     	]
+				     },
+				     
+				     	{xtype: "panel",margin:"1",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},height:"20%",
+				     	items:[
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn4",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn5",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn6",
+				     			margin:"2"}
+				     	]
+				     },
+				     
+				     	{xtype: "panel",margin:"1",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},height:"20%",
+				     	items:[
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn7",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn8",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			text:"",height:"30",width:"40",id:"btn9",
+				     			margin:"2"}
+				     	]
+				    }]
+			}
+			
+		});
+		
+
+		Ext.application({
+			launch: function(){
+				Ext.create("Panel1",{
+					fullscreen:true
+				});
+			}
+		});
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>
