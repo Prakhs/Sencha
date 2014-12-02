@@ -1,0 +1,61 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+		Ext.application({
+			launch:function(){
+				Ext.create('Ext.Panel', {
+					fullscreen:true,
+					id:"Main",
+				    layout: 'card',
+				    activeItem:0,
+				    defaults:{
+				    	xtype:"button"
+				    },
+				    items: [
+				        {	
+				            text: "First Item",
+				            listeners:{
+				            	tap:function(){
+				            		Ext.getCmp("Main").setActiveItem(1);
+				            	}
+				            }
+				        },
+				        {
+				            	
+				            text: "Second Item",
+				            listeners:{
+				            	tap:function(){
+				            		Ext.getCmp("Main").setActiveItem(2);
+				            	}
+				            }
+				        },
+				        {
+				           	
+				            text: "Third Item",
+				            listeners:{
+				            	tap:function(){
+				            		Ext.getCmp("Main").setActiveItem(3);
+				            	}
+				            }
+				        },
+				        {
+				            	
+				            text: "Fourth Item",
+				            listeners:{
+				            	tap:function(){
+				            		Ext.getCmp("Main").setActiveItem(0);
+				            	}
+				            }
+				        }
+				    ]
+				});
+			}
+		})
+	</script>
+</head>
+<body>
+
+</body>
+</html>
