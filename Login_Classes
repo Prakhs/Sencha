@@ -1,0 +1,143 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+		Ext.define("LoginScreen",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"titlebar",
+					title:"Login Page",
+					height:"5%",
+					id:"login_page"
+				},
+				{
+					xtype:"textfield",
+					placeHolder:"Username",
+					id:"user"
+				},
+				{
+					xtype:"passwordfield",
+					placeHolder:"Password",
+					id:"pass"
+				},
+				{
+					xtype:"button",
+					text:"Login",
+					id:"login",
+					listeners:{
+								tap:function(){
+									Ext.getCmp("Main").setActiveItem(1);
+								}
+							}
+				}
+
+				]
+			}
+		});
+		Ext.define("Home_Page",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"titlebar",
+					title:"Welcome",
+					id:"home_page",
+					height:"5%",
+					items:[
+					{
+					xtype:"button",
+					text:"Settings",
+					id:"settings",
+					align:"right",
+					listeners:{
+								tap:function(){
+									Ext.getCmp("Main").setActiveItem(2);
+								}
+							}
+				},
+				{
+					xtype:"button",
+					text:"Logout",
+					id:"logout",
+					listeners:{
+								tap:function(){
+									Ext.getCmp("Main").setActiveItem(0);
+								}
+							}
+				}
+
+					]
+				},
+				
+				]
+			}
+		});
+		Ext.define("Settings",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"titlebar",
+					title:"Settings",
+					id:"settings_page",
+					height:"5%",
+					items:[
+						{
+					xtype:"button",
+					text:"Home",
+					id:"back",
+					listeners:{
+								tap:function(){
+									Ext.getCmp("Main").setActiveItem(1);
+								}
+							}
+				}
+					]
+				}
+				
+				]
+				
+			}
+		});
+		Ext.application({
+			launch:function(){
+				Ext.create("Ext.Panel",{
+					fullscreen:true,
+					layout:"card",
+					activeItem:0,
+					id:"Main",
+					items:[
+
+						Ext.create("LoginScreen",{
+							
+						}),
+						Ext.create("Home_Page",{
+							listeners:{
+								tap:function(){
+									Ext.getCmp("Main").setActiveItem(2);
+								}
+							}
+						}),
+						Ext.create("Settings",{
+							listeners:{
+								tap:function(){
+									Ext.getCmp("Main").setActiveItem(0);
+								}
+							}
+						})
+
+					
+					
+					]
+				});
+			}
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
