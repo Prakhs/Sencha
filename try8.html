@@ -1,0 +1,45 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+		Ext.define("User",{
+			extend:"Ext.data.Model",
+			config:{
+				fields:["country","capital"]
+			},
+		});
+		Ext.define("userStore",{
+			extend:"Ext.data.Store",
+			config:{
+				model:"User",
+				data:[
+					{
+						country:"India",capital:"Delhi"
+					},
+					{
+						country:"USA",capital:"DC"
+					},
+					{
+						country:"UK",capital:"London"
+					}
+
+				]
+			}
+		})
+		var obj=Ext.create("userStore",{});
+		Ext.application({
+			launch:function(){
+				Ext.create("Ext.dataview.List",{
+					fullscreen:true,
+					store:obj,
+					itemTpl:"<b>{country}</b>,<i>{capital}</i>"
+				})
+			}
+		})
+	</script>
+</head>
+<body>
+
+</body>
+</html>
