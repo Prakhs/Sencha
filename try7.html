@@ -1,0 +1,54 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+		Ext.application({
+
+			launch:function(){ 
+				Ext.create("Ext.Panel",{
+					fullscreen:true,
+					items:[
+						{
+							xtype:"textfield",
+							placeHolder:"Capital",
+							id:"country"
+						},
+
+						{
+							xtype:"button",
+							text:"Search",
+							id:"search",
+							listeners:{
+								tap:function(){
+									Ext.Ajax.request({
+										url:"World",
+										method:"GET",
+										params:{
+											country:Ext.getCmp("country").getValue()			
+										},
+										success:function(xhr){
+											var response=xhr.responseText;
+											var obj=Ext.JSON.decode(response);
+										
+											Ext.getCmp("capital").setHtml(obj.capital);
+										}
+									})
+								}
+							}
+						},
+						{
+							xtype:"label",
+							id:"capital"
+						}
+					]
+				})	;			
+				
+			}
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
