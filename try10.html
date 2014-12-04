@@ -1,0 +1,116 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+	Ext.define("User1",{
+			extend:"Ext.data.Model",
+			config:{
+				fields:["country","capital"]
+			},
+		});
+		Ext.define("userStore",{
+			extend:"Ext.data.Store",
+			config:{
+				model:"User1",
+				data:[
+					{
+						country:"India",capital:"Delhi"
+					},
+					{
+						country:"USA",capital:"DC"
+					},
+					{
+						country:"UK",capital:"London"
+					}
+
+				]
+			}
+		});
+		
+		var obj=Ext.create("userStore",{});
+
+		Ext.define("New_Country",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+					{
+						xtype:"textfield",
+						placeHolder:"Enter Your Country",
+						id:"new"
+					},
+					{
+						xtype:"button",
+						text:"Addfsadsafd",
+						width:"50%",
+						id:"add_button",
+						listeners:{
+							tap:function(src, index){
+								var newc= Ext.getCmp("new").getValue();
+								console.log(newc);
+								var new_obj=obj.add({country:newc,capital:"jhfgiuyt875"});
+								newCountry.hide();
+							}
+						}
+					}
+				]
+			}
+		});
+
+		
+		var newCountry;
+		Ext.define("CountryPanel",{
+			extend:"Ext.Panel",
+			config:{
+				height:"100%",
+				width:"100%",
+				items:[
+					{
+						xtype:"titlebar",
+						title:"Countries",
+						height:"5%",
+						items:[
+							{
+								xtype:"button",
+								id:"but",
+								text:"+",
+								align:"right",
+								listeners:{
+									tap:function(src){
+
+										if(!newCountry){
+											newCountry = Ext.create("New_Country",{
+												id : "newcountry"
+											});
+										}
+										newCountry.showBy(src);
+									}
+								}
+							},
+						]
+					},
+					{
+						xtype:"list",
+						height:"100%",
+						width:"100%",
+						store:obj,
+						itemTpl:"<b>{country}</b>,<i>{capital}</i>"
+					}
+				]
+			}
+		});	
+		
+			Ext.application({
+			launch: function(){
+				Ext.Viewport.add([
+					Ext.create("CountryPanel")
+				]);
+
+			}
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
