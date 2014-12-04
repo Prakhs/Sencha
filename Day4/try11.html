@@ -1,0 +1,48 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+		
+		Ext.define("peopleModel",{
+			extend:"Ext.data.Model",
+			
+			config:{
+				fields:["name","age","country"]
+			}
+		});
+		
+		Ext.define("peopleStore",{
+			extend:"Ext.data.Store",
+			config:{
+				autoLoad:true,
+				model:"peopleModel",
+				proxy: {
+				   type: "ajax",
+				   url: "Cricketers",			   
+				   reader: {
+				    type: "json",
+				    rootProperty:"cricketerslist"
+				   }
+				}
+			}
+		});
+		
+		var peopleRecord=Ext.create("peopleStore",{});
+		
+		Ext.application({
+			launch:function(){
+				Ext.create("Ext.dataview.List",{
+					fullscreen:true,
+					store:peopleRecord,
+					itemTpl:"<b>Name:{name}</b>,<b>Age:{age}</b>,<b>Country{country}</b>"
+				});
+				}
+		});
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
