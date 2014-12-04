@@ -1,0 +1,104 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+		Ext.define("userScreen",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"textfield",
+					placeHolder:"Username",
+					id:"user"
+				},
+				{
+					xtype:"passwordfield",
+					placeHolder:"Password",
+					id:"pass"
+				},
+				{
+					xtype:"button",
+					text:"Submit",
+					listeners:{
+						tap:function(){
+							var username=Ext.getCmp("user").getValue();
+							var password=Ext.getCmp("pass").getValue();
+							console.log(username);
+							Ext.Ajax.request({
+								url:"authenticate",
+								method:"GET",
+								params:{
+									username:username,
+									password:password
+								},
+								success:function(xhr){
+									var response=xhr.responseText;
+									console.log(response);
+									var obj=Ext.JSON.decode(response);
+									if(obj.message=="Login Successful"){
+									Ext.Viewport.setActiveItem(1);
+									Ext.getCmp("label").setHtml(obj.message);
+								}else
+								Ext.Viewport.setActiveItem(0);
+								Ext.getCmp("label1").setHtml(obj.message);
+									
+									
+								}
+							});
+							
+						}
+					}
+				},
+				{
+					xtype:"label",					
+					id:"label1"
+				}
+				/*{
+					xtype:"button",
+					text:"Login",
+					id:"log",
+					listeners:{
+						tap:function(){
+							console.log("project");
+							
+							
+						}
+					}
+				},*/
+				
+				
+				]
+			}
+		});
+		Ext.define("welcomeScreen",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"titlebar",
+					title:"Welcome",
+					height:"5%"
+				},
+				{
+					xtype:"label",					
+					id:"label"
+				}
+				]
+			}
+		});
+		var panel1=Ext.create("userScreen",{});
+		Ext.application({
+			launch:function(){
+				Ext.Viewport.add([
+					Ext.create("userScreen",{}),
+					Ext.create("welcomeScreen",{})
+				]);
+			}
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
