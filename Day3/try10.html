@@ -1,0 +1,110 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+	Ext.define("User1",{
+			extend:"Ext.data.Model",
+			config:{
+				fields:["country","capital"]
+			},
+		});
+		Ext.define("userStore",{
+			extend:"Ext.data.Store",
+			config:{
+				model:"User1",
+				data:[
+					{
+						country:"India",capital:"Delhi"
+					},
+					{
+						country:"USA",capital:"DC"
+					},
+					{
+						country:"UK",capital:"London"
+					}
+
+				]
+			}
+		});
+		
+		var obj=Ext.create("userStore",{});
+		Ext.define("CountryPanel",{
+			extend:"Ext.Panel",
+			config:{
+				height:"100%",
+				width:"100%",
+				items:[
+					{
+						xtype:"titlebar",
+						title:"Countries",
+						height:"5%",
+						items:[
+							{
+								xtype:"button",
+								text:"+",
+								align:"right",
+								listeners:{
+									tap:function(){
+										Ext.Viewport.setActiveItem(1);
+									}
+								}
+							},
+						]
+					},
+					{
+						xtype:"list",
+						height:"100%",
+						width:"100%",
+						store:obj,
+						itemTpl:"<b>{country}</b>,<i>{capital}</i>"
+					}
+				]
+			}
+		});
+		Ext.define("New_Country",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+					{
+						xtype:"textfield",
+						placeHolder:"Enter Your Country",
+						id:"new"
+					},
+					{
+						xtype:"button",
+						text:"Add",
+						id:"add_button",
+						listeners:{
+							tap:function(src, index){
+
+								var newc= Ext.getCmp("new").getValue();
+								
+								var new_obj=obj.add({country:newc,capital:"jhfgiuyt875"});
+								
+								
+								Ext.Viewport.setActiveItem(0);
+							}
+						}
+					}
+				]
+			}
+		})
+		
+		
+		Ext.application({
+			launch: function(){
+				Ext.Viewport.add([
+					Ext.create("CountryPanel"),
+					Ext.create("New_Country")
+
+				]);
+
+			}
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>
