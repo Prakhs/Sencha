@@ -1,0 +1,127 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript">
+
+	var currentPlayer="X";
+	var num=Math.floor(Math.random()*9+1);
+
+	function tic(src){
+		console.log(src.getId());
+
+		Ext.getCmp(src.getId()).setText("X")
+		Ext.getCmp("btn"+num).setText("O");
+		Ext.getCmp("btn"+num).setText("O");
+
+	}
+
+		Ext.application({
+			launch: function(){
+				Ext.create('Ext.Panel', {
+				     fullscreen: true,
+				     layout:{
+				     	type:"vbox",
+				     	pack:"center",
+				     	align:"center"
+				     },
+				     items:[
+				     {
+				     	xtype: "panel",
+				     	margin:"1",
+				     	height:"20%",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},
+				     	items:[
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn1",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn2",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn3",
+				     			margin:"2"}
+				     	]
+				     },
+				     
+				     	{xtype: "panel",margin:"1",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},height:"20%",
+				     	items:[
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn4",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn5",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn6",
+				     			margin:"2"}
+				     	]
+				     },
+				     
+				     	{xtype: "panel",margin:"1",
+				     	layout: {
+				     		type:"hbox",
+				     		align:"center"
+				     	},height:"20%",
+				     	items:[
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn7",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn8",
+				     			margin:"2"},
+				     		{xtype: "button",
+				     			listeners:{
+							    	tap:tic
+							    },
+				     			text:"",height:"30",width:"40",id:"btn9",
+				     			margin:"2"}
+				     	]
+				    }]
+
+				 })
+			
+				Ext.create("Ext.Label",{
+					id:"message"
+				})
+			}
+
+		})
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
