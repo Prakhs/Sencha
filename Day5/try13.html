@@ -1,0 +1,99 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script>
+		Ext.define("User",{
+			extend:"Ext.data.Model",
+			config:{
+				idProperty:"username",
+				fields:["username", "password","message"],
+				proxy: {
+				  actionMethods: {
+			            read   : 'GET',
+        			},	
+				   type: "ajax",
+				   url: "authenticate"	   
+				}
+			}
+		});
+
+		Ext.define("userScreen",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"textfield",
+					placeHolder:"Username",
+					id:"user"
+				},
+				{
+					xtype:"passwordfield",
+					placeHolder:"Password",
+					id:"pass"
+				},
+				{
+					xtype:"button",
+					text:"Submit",
+					listeners:{
+						tap:function(){
+							var username=Ext.getCmp("user").getValue();
+							var password=Ext.getCmp("pass").getValue();
+							User.getProxy().setExtraParams({
+								password : password
+							});
+							User.load(username,{
+								success : function(record){
+									console.log(record.get("message"));
+									if(record.get("message")=="Login Successful"){
+										Ext.Viewport.setActiveItem(1);
+										Ext.getCmp("label").setHtml(record.get("message"));
+									}
+									else{
+										Ext.Viewport.setActiveItem(0);
+										Ext.getCmp("label1").setHtml(record.get("message"));
+									}
+								}
+							});
+							
+						}
+					}
+				},
+				{
+					xtype:"label",					
+					id:"label1"
+				}				
+				]
+			}
+		});
+		Ext.define("welcomeScreen",{
+			extend:"Ext.Panel",
+			config:{
+				items:[
+				{
+					xtype:"titlebar",
+					title:"Welcome",
+					height:"5%"
+				},
+				{
+					xtype:"label",					
+					id:"label"
+				}
+				]
+			}
+		});
+		
+		Ext.application({
+			launch:function(){
+				Ext.Viewport.add([
+				Ext.create("userScreen",{fullscreen:true}),
+				Ext.create("welcomeScreen",{})
+				])
+			}
+		})
+	</script>
+</head>
+<body>
+
+</body>
+</html>
