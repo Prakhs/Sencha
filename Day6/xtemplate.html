@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
+		<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+		<style type="text/css">.nam{
+			color:red;
+		}</style>
+		<script>
+		
+		var person=[
+
+			{name:"Prakhar",age:22},
+			{name:"Jeevan",age:17},
+			{name:"Vikash", age:21},
+			{name:"Deepa", age:25}
+
+			];
+		
+		var tpl=Ext.create("Ext.XTemplate",
+			
+			'<tpl for=".">',
+			"<p> I am",
+			'<tpl if="age &gt;= 20">',
+		       '<span class="nam">{name}</span>',
+			"<br/>",
+		    '<tpl else>',
+		      '<p>{name}</p>',
+		     '</tpl>', 
+			"<i>{age} years old</i>",
+			"<hr/>",
+			"<br/>",
+			'</tpl>')
+			Ext.application({
+				launch:function(){
+					var output=tpl.apply(person);
+					
+					Ext.Viewport.add({
+						xtype:"panel",
+						html:output
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
