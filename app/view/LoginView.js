@@ -1,0 +1,29 @@
+Ext.define("MVC.view.LoginView",{
+	extend:"Ext.Panel",
+	xtype:"loginview",
+	config:{
+		items:[
+		{
+			xtype:"titlebar",
+			title:"Login",
+			height:"5%"
+		},
+		{
+			xtype:"textfield",
+			placeHolder:"Username",
+			id:"user"
+		},
+		{
+			xtype:"passwordfield",
+			placeHolder:"Password",
+			id:"pass"
+		},
+		{
+			xtype:"button",
+			text:"Login",
+			id:"button"
+		}
+
+		]
+	}
+})
